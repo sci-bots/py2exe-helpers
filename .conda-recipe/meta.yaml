@@ -19,9 +19,11 @@ build:
 requirements:
   build:
     - path_helpers
+    - py2exe==0.6.9
 
   run:
     - path_helpers
+    - py2exe==0.6.9
 
 test:
   imports:
