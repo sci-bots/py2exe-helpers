@@ -22,6 +22,15 @@ except ImportError:
     # no build path setup, no worries.
     pass
 
+try:
+    # Prevent `_tkinter.TclError: Can't find a usable init.tcl in the following
+    # directories` error.  This error seems to occur if `_tkinter` is imported
+    # before importing `Tkinter`.  To prevent this from happening, explicitly
+    # import `Tkinter` here.
+    import Tkinter
+except ImportError:
+    pass
+
 from ._version import get_versions
 __version__ = get_versions()['version']
 del get_versions
