@@ -1,3 +1,7 @@
+import os
+
+import path_helpers as ph
+
 # See: http://www.py2exe.org/index.cgi/win32com.shell?action=show&redirect=WinShell
 # ModuleFinder can't handle runtime changes to __path__, but win32com uses them
 try:
@@ -30,6 +34,26 @@ try:
     import Tkinter
 except ImportError:
     pass
+
+try:
+    import gst
+    # Add gstreamer DLLs to system executable path.
+    os.environ['PATH'] += (os.path.pathsep +
+                           os.path.pathsep.join([# GStreamer DLLs
+                                                 ph.path(gst.__file__).parent
+                                                 .joinpath('plugins'),
+                                                 ph.path(gst.__file__).parent
+                                                 .joinpath('bin')]))
+except ImportError:
+    pass
+
+try:
+    import zmq
+    # Add ZeroMQ DLL (i.e., `libzmq.dll`) to system executable path.
+    os.environ['PATH'] += os.path.pathsep + os.path.split(zmq.__file__)[0]
+except ImportError:
+    pass
+
 
 from ._version import get_versions
 __version__ = get_versions()['version']
