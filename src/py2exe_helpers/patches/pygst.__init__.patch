@@ -1,0 +1,7 @@
+Lib/site-packages/gst-0.10/gst/__init__.py
+37c37,39
+< os.environ['GST_PLUGIN_PATH'] = os.path.abspath(os.path.join(GST_PATH, 'plugins'))
+---
+> if 'GST_PLUGIN_PATH' not in os.environ:
+>     os.environ['GST_PLUGIN_PATH'] = os.path.abspath(os.path.join(GST_PATH,
+>                                                                  'plugins'))
