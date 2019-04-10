@@ -1,3 +1,4 @@
+from __future__ import absolute_import, print_function
 import re
 import site
 import subprocess as sp
@@ -33,7 +34,8 @@ def apply_patches(patches_dir=None):
         file_path_i = sys_prefix.joinpath(patch_file_i.lines()[0]
                                           .strip()).realpath()
         if not file_path_i.isfile():
-            print >> sys.stderr, 'File to patch not found: `%s`' % file_path_i
+            print('File to patch not found: `%s`' % file_path_i,
+                  file=sys.stderr)
             continue
         process_i = sp.Popen(['patch', '-d', file_path_i.parent,
                               file_path_i.name, '-i', patch_file_i,
@@ -68,7 +70,7 @@ def fix_init(package_specs, package_inits=None):
                 init_i = site_packages.joinpath(*(missing_init_i.split('.') +
                                                   ['__init__.py']))
                 if not init_i.isfile():
-                    print 'Created missing `%s`.' % init_i
+                    print('Created missing `%s`.' % init_i)
                     init_i.touch()
 
 
