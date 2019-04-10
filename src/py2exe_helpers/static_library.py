@@ -3,6 +3,7 @@ Static files to include in site-packages or `library.zip`
 '''
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
+import os
 import re
 import sys
 
@@ -20,6 +21,19 @@ DEFAULT_STATIC_PACKAGES = {'ipython': {'module': 'IPython', 'dirs': ['core/profi
                            'pint': {},
                            'wheeler.pygtkhelpers': {'module': 'pygtkhelpers'},
                            'teensy-minimal-rpc': {'module': 'teensy_minimal_rpc'}}
+
+try:
+    import microdrop
+
+    # Add MicroDrop plugins directory to import path.
+    conda_prefix = ph.path(os.environ['CONDA_PREFIX'])
+    microdrop_plugins_dir = conda_prefix.joinpath('etc', 'microdrop',
+                                                  'plugins', 'enabled')
+    if microdrop_plugins_dir not in sys.path:
+        sys.path.append(microdrop_plugins_dir)
+except ImportError:
+    # MicroDrop is not installed in environment.
+    pass
 
 
 def get_package_static_files(package_specs, static_packages=None):
