@@ -25,6 +25,7 @@ DEFAULT_INCLUDES = {'scons': ['UserDict',
                     'protobuf': ['google.protobuf.descriptor']}
 
 DEFAULT_PACKAGES = {'IPython': ['IPython'],
+                    'base-node-rpc': ['base_node_rpc'],
                     'dropbot': ['dropbot'],
                     'jsonpickle': ['jsonpickle'],
                     'jupyter_core': ['jupyter_core'],
