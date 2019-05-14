@@ -14,12 +14,12 @@ package:
 
 build:
   noarch: python
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
-  build:
-    - path_helpers
-    - py2exe==0.6.9
+  host:
+    - python
+    - pip
 
   run:
     - path_helpers
