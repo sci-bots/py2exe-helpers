@@ -37,6 +37,7 @@ DEFAULT_STATIC_PREFIX = {'__core__': {'files': [{'source': '$PY2EXE_HELPERS/scri
                          'pygtk2': {'module': 'gtk', 'files': [{'source': '$MODULE/../gtk_runtime/share/themes/MS-Windows/gtk-2.0/', 'target': 'etc/gtk-2.0'},
                                                                {'source': '$MODULE/../gtk_runtime/lib/gtk-2.0/2.10.0/engines/*.dll', 'target': 'lib/gtk-2.0/2.10.0/engines'},
                                                                {'source': '$MODULE/../gtk_runtime/share/icons/hicolor/', 'target': 'share/icons/hicolor'}]},
+                         'pyzmq': {'module': 'zmq', 'files': [{'source': '$MODULE/libzmq.pyd', 'target': ''}]},
                         }
 
 try:
