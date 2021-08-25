@@ -244,7 +244,8 @@ import pygments.styles.perldoc
 import pygments.styles.rainbow_dash
 import pygments.styles.rrt
 import pygments.styles.sas
-import pygments.styles.stata
+import pygments.styles.stata_light
+import pygments.styles.stata_dark
 import pygments.styles.tango
 import pygments.styles.trac
 import pygments.styles.vim
